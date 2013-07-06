@@ -40,8 +40,14 @@ public class SonarJavaMelodyPlugin extends SonarPlugin {
   @Override
   public List<?> getExtensions() {
     List<Class<? extends Extension>> list = new ArrayList<Class<? extends Extension>>();
-    list.add(SonarMonitoringFilter.class);
-    list.add(MonitoringLink.class);
+    try {
+    	list.add(SonarMonitoringFilter.class);
+    	list.add(MonitoringLink.class);
+    } catch (final Throwable t) {
+    	// the plugin is installed when doing sonar analysis on a project !
+    	// but fails to load the class javax.servlet.Filter,
+    	// so ignoring the problem in a sonar analysis
+    }
     return list;
   }
 }
