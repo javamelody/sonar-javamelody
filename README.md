@@ -1,9 +1,12 @@
 sonar-javamelody
 =========================
 
-See http://javamelody.googlecode.com
+Extension plugin for JavaMelody to monitor performance in Sonar.
 
-Extension plugin for JavaMelody plugin in Sonar.
+See http://javamelody.googlecode.com
+Continuous integration: https://javamelody.ci.cloudbees.com/job/sonar-javamelody/
+Please submit github pull requests and github issues.
+
 
 I - Compiling and Installing the plugin:
 ---------------------------------------
