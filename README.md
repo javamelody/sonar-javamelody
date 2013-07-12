@@ -7,6 +7,8 @@ See http://javamelody.googlecode.com
 
 Continuous integration: https://javamelody.ci.cloudbees.com/job/sonar-javamelody/
 
+License LGPL, http://www.gnu.org/licenses/lgpl-3.0.txt
+
 Please submit github pull requests and github issues.
 
 
