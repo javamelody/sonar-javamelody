@@ -12,13 +12,13 @@ License LGPL, http://www.gnu.org/licenses/lgpl-3.0.txt
 Please submit github pull requests and github issues.
 
 
-I - Compiling and Installing the plugin:
+Compiling and Installing the plugin:
 ---------------------------------------
  - Install maven
  - Clone the repository
  - Compile and test the code, then generate the jar:
 	-> run "mvn clean install" command in your terminal
- - copy the jar (in the new generated target folder) in <path_to_your_sonar_install>/extensions/plugins folder,
+ - copy the jar (in the new generated target folder) in \<path_to_your_sonar_install\>/extensions/plugins folder,
  - restart sonar
  - open http://localhost:9000/monitoring in a browser
  
