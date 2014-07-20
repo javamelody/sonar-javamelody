@@ -26,13 +26,14 @@ import org.sonar.api.web.UserRole;
 @NavigationSection(NavigationSection.CONFIGURATION)
 @UserRole(UserRole.ADMIN)
 public final class MonitoringLink implements Page {
-  @Override
-public String getId() {
-    // URL
-    return "/monitoring";
-  }
-  @Override
-public String getTitle() {
-    return "Monitoring";
-  }
+	@Override
+	public String getId() {
+		// URL
+		return "/monitoring";
+	}
+
+	@Override
+	public String getTitle() {
+		return "Monitoring";
+	}
 }

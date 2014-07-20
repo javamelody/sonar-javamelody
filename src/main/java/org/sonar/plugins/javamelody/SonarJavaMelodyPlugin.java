@@ -32,22 +32,22 @@ import java.util.List;
  */
 
 public class SonarJavaMelodyPlugin extends SonarPlugin {
-  public SonarJavaMelodyPlugin() {
-    super();
-	System.setProperty("javamelody.no-database", "true");
-  }
+	public SonarJavaMelodyPlugin() {
+		super();
+		System.setProperty("javamelody.no-database", "true");
+	}
 
-  @Override
-  public List<?> getExtensions() {
-    List<Class<? extends Extension>> list = new ArrayList<Class<? extends Extension>>();
-    try {
-    	list.add(SonarMonitoringFilter.class);
-    	list.add(MonitoringLink.class);
-    } catch (final Throwable t) {
-    	// the plugin is installed when doing sonar analysis on a project !
-    	// but fails to load the class javax.servlet.Filter,
-    	// so ignoring the problem in a sonar analysis
-    }
-    return list;
-  }
+	@Override
+	public List<?> getExtensions() {
+		List<Class<? extends Extension>> list = new ArrayList<Class<? extends Extension>>();
+		try {
+				list.add(SonarMonitoringFilter.class);
+				list.add(MonitoringLink.class);
+		} catch (final Throwable t) {
+				// the plugin is installed when doing sonar analysis on a project !
+				// but fails to load the class javax.servlet.Filter,
+				// so ignoring the problem in a sonar analysis
+		}
+		return list;
+	}
 }
