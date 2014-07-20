@@ -27,6 +27,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import net.bull.javamelody.PluginMonitoringFilter;
 
@@ -55,12 +56,13 @@ public class SonarMonitoringFilter37 extends ServletFilter {
 		try {
 			// https://github.com/SonarSource/sonar/blob/master/sonar-server/src/main/java/org/sonar/server/user/UserSession.java
 			userSessionClass = Class.forName("org.sonar.server.user.UserSession");
-			// https://github.com/SonarSource/sonar/blob/master/sonar-core/src/main/java/org/sonar/core/user/Permission.java
-			permissionClass = Class.forName("org.sonar.core.user.Permission");
+			// https://github.com/SonarSource/sonar/blob/master/sonar-core/src/main/java/org/sonar/core/permission/Permission.java
+			permissionClass = Class.forName("org.sonar.core.permission.Permission");
 		} catch (final ClassNotFoundException e) {
 			userSessionClass = null;
 			permissionClass = null;
 			// Permission existe seulement depuis sonar 3.7 et UserSession etait avant dans org.sonar.server.platform
+			// TODO Permission n'existe plus en sonar 4.3.2
 		}
 	}
 
@@ -79,30 +81,33 @@ public class SonarMonitoringFilter37 extends ServletFilter {
 			return;
 		}
 		final HttpServletRequest httpRequest = (HttpServletRequest) request;
-		// final HttpServletResponse httpResponse = (HttpServletResponse) response;
+		final HttpServletResponse httpResponse = (HttpServletResponse) response;
 
 		if (httpRequest.getRequestURI().equals(pluginMonitoringFilter.getMyMonitoringUrl(httpRequest))) {
-			checkSystemAdmin();
+			try {
+				checkSystemAdmin();
+			} catch (final Exception e) {
+				// TODO faire plutot un redirect vers login et return avant doFilter ?
+				e.printStackTrace();
+				httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "Forbidden access");
+				httpResponse.flushBuffer();
+				return;
+			}
 		}
 
 		pluginMonitoringFilter.doFilter(request, response, chain);
 	}
 	
-	private void checkSystemAdmin() throws ServletException {
-		try {
-			// fonctionne en sonar 3.7 et +
-			if (!PLUGIN_AUTHENTICATION_DISABLED && userSessionClass != null && permissionClass != null) {
-				final Object userSession = userSessionClass.getMethod("get").invoke(null);
-				userSessionClass.getMethod("checkLoggedIn").invoke(userSession);
-				// equivalent de org.sonar.server.user.UserSession.get().checkLoggedIn();
+	private void checkSystemAdmin() throws Exception {
+		// censé fonctionner en sonar 3.7 et +, mais pas en sonar 4.3.2
+		if (!PLUGIN_AUTHENTICATION_DISABLED && userSessionClass != null && permissionClass != null) {
+			final Object userSession = userSessionClass.getMethod("get").invoke(null);
+			userSessionClass.getMethod("checkLoggedIn").invoke(userSession);
+			// equivalent de org.sonar.server.user.UserSession.get().checkLoggedIn();
 
-				final Object systemAdminPermission = permissionClass.getField("SYSTEM_ADMIN").get(null);
-				userSessionClass.getMethod("checkGlobalPermission", permissionClass).invoke(userSession, systemAdminPermission);
-				// equivalent de org.sonar.server.user.UserSession.get().checkGlobalPermission(Permission.SYSTEM_ADMIN);
-			}
-		} catch (final Exception e) {
-			// TODO faire plutot un redirect vers login et return avant doFilter ?
-			throw new ServletException(e);
+			final Object systemAdminPermission = permissionClass.getField("SYSTEM_ADMIN").get(null);
+			userSessionClass.getMethod("checkGlobalPermission", permissionClass).invoke(userSession, systemAdminPermission);
+			// equivalent de org.sonar.server.user.UserSession.get().checkGlobalPermission(Permission.SYSTEM_ADMIN);
 		}
 	}
 }
