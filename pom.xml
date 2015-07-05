@@ -15,7 +15,7 @@
 
 	<name>Sonar JavaMelody Plugin</name>
 	<description>JavaMelody Monitoring in Sonar.</description>
-	<url>http://javamelody.googlecode.com</url>
+	<url>https://github.com/javamelody/javamelody/wiki</url>
 	<inceptionYear>2013</inceptionYear>
 
 	<developers>
@@ -27,7 +27,7 @@
 	</developers>
 	<organization>
 		<name>Emeric Vernat</name>
-		<url>http://javamelody.googlecode.com</url>
+		<url>https://github.com/javamelody/javamelody/wiki</url>
 	</organization>
 	<licenses>
 		<license>

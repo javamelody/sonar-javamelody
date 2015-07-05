@@ -3,7 +3,7 @@ sonar-javamelody
 
 Extension plugin for JavaMelody to monitor performance in Sonar 3.1 or later.
 
-See http://javamelody.googlecode.com
+See https://github.com/javamelody/javamelody/wiki
 
 Continuous integration: https://javamelody.ci.cloudbees.com/job/sonar-javamelody/
 
