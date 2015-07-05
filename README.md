@@ -14,7 +14,7 @@ Please submit github pull requests and github issues.
 
 Downloading and Installing the plugin:
 ---------------------------------------
- - download the latest sonar-javamelody-plugin jar file from [releases](https://github.com/evernat/sonar-javamelody/releases)
+ - download the latest sonar-javamelody-plugin jar file from [releases](../../releases)
  - copy the jar in \<path_to_your_sonar_install\>/extensions/plugins folder,
  - restart sonar
  - open http://localhost:9000/monitoring in a browser
