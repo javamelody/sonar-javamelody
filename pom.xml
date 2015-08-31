@@ -38,14 +38,14 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:git@github.com:evernat/sonar-javamelody.git</connection>
-		<developerConnection>scm:git:git@github.com:evernat/sonar-javamelody.git</developerConnection>
-		<url>https://github.com/evernat/sonar-javamelody</url>
+		<connection>scm:git:git@github.com:javamelody/sonar-javamelody.git</connection>
+		<developerConnection>scm:git:git@github.com:javamelody/sonar-javamelody.git</developerConnection>
+		<url>https://github.com/javamelody/sonar-javamelody</url>
 		<tag>HEAD</tag>
 	</scm>
 	<issueManagement>
 		<system>GITHUB</system>
-		<url>https://github.com/evernat/sonar-javamelody/issues</url>
+		<url>https://github.com/javamelody/sonar-javamelody/issues</url>
 	</issueManagement>
 	<ciManagement>
 		<system>Cloudbees</system>
