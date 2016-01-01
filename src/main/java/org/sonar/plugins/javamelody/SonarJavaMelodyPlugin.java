@@ -19,11 +19,11 @@
  */
 package org.sonar.plugins.javamelody;
 
-import org.sonar.api.Extension;
-import org.sonar.api.SonarPlugin;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.sonar.api.Extension;
+import org.sonar.api.SonarPlugin;
 
 /**
  * Main class of JavaMelody Sonar Plugin

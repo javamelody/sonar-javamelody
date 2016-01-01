@@ -29,9 +29,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.bull.javamelody.PluginMonitoringFilter;
-
 import org.sonar.api.web.ServletFilter;
+
+import net.bull.javamelody.PluginMonitoringFilter;
 
 public class SonarMonitoringFilter37 extends ServletFilter {
 	private static final boolean PLUGIN_AUTHENTICATION_DISABLED = Boolean.parseBoolean(System
@@ -99,7 +99,7 @@ public class SonarMonitoringFilter37 extends ServletFilter {
 	}
 	
 	private void checkSystemAdmin() throws Exception {
-		// censé fonctionner en sonar 3.7 et +, mais pas en sonar 4.3.2
+		// censï¿½ fonctionner en sonar 3.7 et +, mais pas en sonar 4.3.2
 		if (!PLUGIN_AUTHENTICATION_DISABLED && userSessionClass != null && permissionClass != null) {
 			final Object userSession = userSessionClass.getMethod("get").invoke(null);
 			userSessionClass.getMethod("checkLoggedIn").invoke(userSession);

@@ -27,9 +27,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import net.bull.javamelody.PluginMonitoringFilter;
-
 import org.sonar.api.web.ServletFilter;
+
+import net.bull.javamelody.PluginMonitoringFilter;
 
 public class SonarMonitoringFilter extends ServletFilter {
 	private final MyPluginMonitoringFilter pluginMonitoringFilter = new MyPluginMonitoringFilter();
