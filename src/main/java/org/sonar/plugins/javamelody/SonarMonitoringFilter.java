@@ -33,7 +33,7 @@ import net.bull.javamelody.PluginMonitoringFilter;
 
 public class SonarMonitoringFilter extends ServletFilter {
 	private final MyPluginMonitoringFilter pluginMonitoringFilter = new MyPluginMonitoringFilter();
-	
+
 	private static class MyPluginMonitoringFilter extends PluginMonitoringFilter {
 	}
 

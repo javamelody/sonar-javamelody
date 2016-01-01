@@ -34,14 +34,14 @@ import org.sonar.api.web.ServletFilter;
 import net.bull.javamelody.PluginMonitoringFilter;
 
 public class SonarMonitoringFilter37 extends ServletFilter {
-	private static final boolean PLUGIN_AUTHENTICATION_DISABLED = Boolean.parseBoolean(System
-			.getProperty("javamelody.plugin-authentication-disabled"));
+	private static final boolean PLUGIN_AUTHENTICATION_DISABLED = Boolean
+			.parseBoolean(System.getProperty("javamelody.plugin-authentication-disabled"));
 
 	private final MyPluginMonitoringFilter pluginMonitoringFilter = new MyPluginMonitoringFilter();
-	
+
 	private Class<?> userSessionClass;
 	private Class<?> permissionClass;
-	
+
 	private static class MyPluginMonitoringFilter extends PluginMonitoringFilter {
 		protected final String getMyMonitoringUrl(HttpServletRequest httpRequest) {
 			return super.getMonitoringUrl(httpRequest);
@@ -61,7 +61,8 @@ public class SonarMonitoringFilter37 extends ServletFilter {
 		} catch (final ClassNotFoundException e) {
 			userSessionClass = null;
 			permissionClass = null;
-			// Permission existe seulement depuis sonar 3.7 et UserSession etait avant dans org.sonar.server.platform
+			// Permission existe seulement depuis sonar 3.7 et UserSession etait
+			// avant dans org.sonar.server.platform
 			// TODO Permission n'existe plus en sonar 4.3.2
 		}
 	}
@@ -87,7 +88,8 @@ public class SonarMonitoringFilter37 extends ServletFilter {
 			try {
 				checkSystemAdmin();
 			} catch (final Exception e) {
-				// TODO faire plutot un redirect vers login et return avant doFilter ?
+				// TODO faire plutot un redirect vers login et return avant
+				// doFilter ?
 				e.printStackTrace();
 				httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "Forbidden access");
 				httpResponse.flushBuffer();
@@ -97,17 +99,20 @@ public class SonarMonitoringFilter37 extends ServletFilter {
 
 		pluginMonitoringFilter.doFilter(request, response, chain);
 	}
-	
+
 	private void checkSystemAdmin() throws Exception {
 		// cens� fonctionner en sonar 3.7 et +, mais pas en sonar 4.3.2
 		if (!PLUGIN_AUTHENTICATION_DISABLED && userSessionClass != null && permissionClass != null) {
 			final Object userSession = userSessionClass.getMethod("get").invoke(null);
 			userSessionClass.getMethod("checkLoggedIn").invoke(userSession);
-			// equivalent de org.sonar.server.user.UserSession.get().checkLoggedIn();
+			// equivalent de
+			// org.sonar.server.user.UserSession.get().checkLoggedIn();
 
 			final Object systemAdminPermission = permissionClass.getField("SYSTEM_ADMIN").get(null);
-			userSessionClass.getMethod("checkGlobalPermission", permissionClass).invoke(userSession, systemAdminPermission);
-			// equivalent de org.sonar.server.user.UserSession.get().checkGlobalPermission(Permission.SYSTEM_ADMIN);
+			userSessionClass.getMethod("checkGlobalPermission", permissionClass).invoke(userSession,
+					systemAdminPermission);
+			// equivalent de
+			// org.sonar.server.user.UserSession.get().checkGlobalPermission(Permission.SYSTEM_ADMIN);
 		}
 	}
 }

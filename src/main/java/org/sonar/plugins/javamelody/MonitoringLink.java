@@ -22,7 +22,7 @@ package org.sonar.plugins.javamelody;
 import org.sonar.api.web.NavigationSection;
 import org.sonar.api.web.Page;
 import org.sonar.api.web.UserRole;
- 
+
 @NavigationSection(NavigationSection.CONFIGURATION)
 @UserRole(UserRole.ADMIN)
 public final class MonitoringLink implements Page {
