@@ -39,7 +39,7 @@ public class SonarJavaMelodyPlugin extends SonarPlugin {
 
 	@Override
 	public List<?> getExtensions() {
-		List<Class<? extends Extension>> list = new ArrayList<Class<? extends Extension>>();
+		final List<Class<? extends Extension>> list = new ArrayList<Class<? extends Extension>>();
 		try {
 			list.add(SonarMonitoringFilter.class);
 			list.add(MonitoringLink.class);
