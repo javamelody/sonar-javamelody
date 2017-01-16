@@ -35,6 +35,11 @@ public class SonarMonitoringFilter extends ServletFilter {
 	private final MyPluginMonitoringFilter pluginMonitoringFilter = new MyPluginMonitoringFilter();
 
 	private static class MyPluginMonitoringFilter extends PluginMonitoringFilter {
+		/** {@inheritDoc} */
+		@Override
+		public String getApplicationType() {
+			return "Sonar";
+		}
 	}
 
 	/** {@inheritDoc} */
