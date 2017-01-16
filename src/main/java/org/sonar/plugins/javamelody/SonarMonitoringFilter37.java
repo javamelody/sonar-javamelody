@@ -43,6 +43,12 @@ public class SonarMonitoringFilter37 extends ServletFilter {
 	private Class<?> permissionClass;
 
 	private static class MyPluginMonitoringFilter extends PluginMonitoringFilter {
+		/** {@inheritDoc} */
+		@Override
+		public String getApplicationType() {
+			return "Sonar";
+		}
+
 		protected final String getMyMonitoringUrl(HttpServletRequest httpRequest) {
 			return super.getMonitoringUrl(httpRequest);
 		}
