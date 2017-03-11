@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>sonar-javamelody-plugin</artifactId>
-	<version>1.63.0</version>
+	<version>1.64.0</version>
 	<packaging>sonar-plugin</packaging>
 
 	<name>Sonar JavaMelody Plugin</name>
@@ -67,7 +67,7 @@
 		<dependency>
 			<groupId>net.bull.javamelody</groupId>
 			<artifactId>javamelody-core</artifactId>
-			<version>1.63.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.lowagie</groupId>
