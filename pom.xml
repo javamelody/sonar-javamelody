@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>sonar-javamelody-plugin</artifactId>
-	<version>1.64.0</version>
+	<version>1.65.0</version>
 	<packaging>sonar-plugin</packaging>
 
 	<name>Sonar JavaMelody Plugin</name>
