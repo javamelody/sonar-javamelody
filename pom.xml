@@ -3,12 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.codehaus.sonar-plugins</groupId>
-		<artifactId>parent</artifactId>
-		<version>17</version>
-	</parent>
-
+	<groupId>org.codehaus.sonar-plugins</groupId>
 	<artifactId>sonar-javamelody-plugin</artifactId>
 	<version>1.65.0</version>
 	<packaging>sonar-plugin</packaging>
@@ -17,6 +12,9 @@
 	<description>JavaMelody Monitoring in Sonar.</description>
 	<url>https://github.com/javamelody/javamelody/wiki</url>
 	<inceptionYear>2013</inceptionYear>
+	<prerequisites>
+		<maven>3.0.5</maven>
+	</prerequisites>
 
 	<developers>
 		<developer>
@@ -53,11 +51,10 @@
 	</ciManagement>
 
 	<properties>
-		<sonar.version>3.1</sonar.version>
-		<!-- Configuration for sonar-packaging-maven-plugin -->
-		<sonar.pluginClass>org.sonar.plugins.javamelody.SonarJavaMelodyPlugin</sonar.pluginClass>
-		<sonar.pluginKey>javamelody</sonar.pluginKey>
-		<sonar.pluginName>JavaMelody</sonar.pluginName>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<sonar.apiVersion>3.1</sonar.apiVersion>
 	</properties>
 
 	<!-- Testing the plugin in Sonar: mvn install org.codehaus.sonar:sonar-dev-maven-plugin::start-war -Dsonar.runtimeVersion=3.1 
@@ -97,14 +94,40 @@
 		<dependency>
 			<groupId>org.codehaus.sonar</groupId>
 			<artifactId>sonar-plugin-api</artifactId>
-			<version>${sonar.version}</version>
+			<version>${sonar.apiVersion}</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-project</artifactId>
-			<version>2.2.1</version>
+			<!--<groupId>org.sonarsource.sonarqube</groupId>-->
+			<groupId>org.codehaus.sonar</groupId>
+			<artifactId>sonar-testing-harness</artifactId>
+			<version>${sonar.apiVersion}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+				<artifactId>sonar-packaging-maven-plugin</artifactId>
+				<version>1.17</version>
+				<extensions>true</extensions>
+				<configuration>
+					<pluginKey>javamelody</pluginKey>
+					<pluginName>JavaMelody</pluginName>
+					<pluginClass>org.sonar.plugins.javamelody.SonarJavaMelodyPlugin</pluginClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
