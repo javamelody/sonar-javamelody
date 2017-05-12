@@ -89,6 +89,9 @@ public class SonarMonitoringFilter37 extends ServletFilter {
 		final HttpServletResponse httpResponse = (HttpServletResponse) response;
 
 		if (httpRequest.getRequestURI().equals(pluginMonitoringFilter.getMyMonitoringUrl(httpRequest))) {
+			if (isRumMonitoring(httpRequest, httpResponse)) {
+				return;
+			}
 			try {
 				checkSystemAdmin();
 			} catch (final Exception e) {
