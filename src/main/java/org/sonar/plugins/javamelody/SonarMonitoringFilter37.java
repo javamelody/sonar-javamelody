@@ -51,11 +51,10 @@ public class SonarMonitoringFilter37 extends ServletFilter {
 			return super.getMonitoringUrl(httpRequest);
 		}
 
-		// TODO uncomment when isRumMonitoring is not final
-		// protected final boolean isRumMonitoring(HttpServletRequest
-		// httpRequest, HttpServletResponse httpResponse) {
-		// return super.isRumMonitoring(httpRequest, httpResponse);
-		// }
+		protected final boolean isMyRumMonitoring(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
+				throws IOException {
+			return super.isRumMonitoring(httpRequest, httpResponse);
+		}
 	}
 
 	/** {@inheritDoc} */
@@ -95,11 +94,9 @@ public class SonarMonitoringFilter37 extends ServletFilter {
 		final HttpServletResponse httpResponse = (HttpServletResponse) response;
 
 		if (httpRequest.getRequestURI().equals(pluginMonitoringFilter.getMyMonitoringUrl(httpRequest))) {
-			// TODO uncomment when isRumMonitoring is not final
-			// if (pluginMonitoringFilter.isRumMonitoring(httpRequest,
-			// httpResponse)) {
-			// return;
-			// }
+			if (pluginMonitoringFilter.isMyRumMonitoring(httpRequest, httpResponse)) {
+				return;
+			}
 			try {
 				checkSystemAdmin();
 			} catch (final Exception e) {
