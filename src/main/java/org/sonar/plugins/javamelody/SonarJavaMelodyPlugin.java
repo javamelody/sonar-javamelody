@@ -23,6 +23,8 @@ import java.util.List;
 import org.sonar.api.Extension;
 import org.sonar.api.SonarPlugin;
 
+import net.bull.javamelody.Parameter;
+
 /**
  * Main class of JavaMelody Sonar Plugin
  *
@@ -32,7 +34,7 @@ import org.sonar.api.SonarPlugin;
 public class SonarJavaMelodyPlugin extends SonarPlugin {
 	public SonarJavaMelodyPlugin() {
 		super();
-		System.setProperty("javamelody.no-database", "true");
+		Parameter.NO_DATABASE.setValue("true");
 	}
 
 	@Override

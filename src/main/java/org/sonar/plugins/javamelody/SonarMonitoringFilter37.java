@@ -29,11 +29,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.sonar.api.web.ServletFilter;
 
+import net.bull.javamelody.Parameter;
 import net.bull.javamelody.PluginMonitoringFilter;
 
 public class SonarMonitoringFilter37 extends ServletFilter {
-	private static final boolean PLUGIN_AUTHENTICATION_DISABLED = Boolean
-			.parseBoolean(System.getProperty("javamelody.plugin-authentication-disabled"));
+	private static final boolean PLUGIN_AUTHENTICATION_DISABLED = Parameter.PLUGIN_AUTHENTICATION_DISABLED.getValueAsBoolean();
 
 	private final MyPluginMonitoringFilter pluginMonitoringFilter = new MyPluginMonitoringFilter();
 
