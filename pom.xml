@@ -5,7 +5,7 @@
 
 	<groupId>org.codehaus.sonar-plugins</groupId>
 	<artifactId>sonar-javamelody-plugin</artifactId>
-	<version>1.69.0</version>
+	<version>1.70.0</version>
 	<packaging>sonar-plugin</packaging>
 
 	<name>Sonar JavaMelody Plugin</name>
