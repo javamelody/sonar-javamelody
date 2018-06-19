@@ -23,6 +23,7 @@ import org.sonar.api.web.UserRole;
 
 @NavigationSection(NavigationSection.CONFIGURATION)
 @UserRole(UserRole.ADMIN)
+//@org.sonar.api.server.ServerSide avec sonar.apiVersion >= 5.2 change quelque chose ?
 public final class MonitoringLink implements Page {
 	@Override
 	public String getId() {
