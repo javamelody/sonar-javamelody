@@ -29,4 +29,3 @@ Compiling and Installing the plugin:
  - copy the jar (in the new generated target folder) in \<path_to_your_sonar_install\>/extensions/plugins folder,
  - restart sonar
  - open http://localhost:9000/monitoring in a browser
- 
