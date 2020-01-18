@@ -12,9 +12,6 @@
 	<description>JavaMelody Monitoring in Sonar.</description>
 	<url>https://github.com/javamelody/javamelody/wiki</url>
 	<inceptionYear>2013</inceptionYear>
-	<prerequisites>
-		<maven>3.0.5</maven>
-	</prerequisites>
 
 	<developers>
 		<developer>
