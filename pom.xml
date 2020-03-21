@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -54,8 +55,8 @@
 		<sonar.apiVersion>3.1</sonar.apiVersion>
 	</properties>
 
-	<!-- Testing the plugin in Sonar: mvn install org.codehaus.sonar:sonar-dev-maven-plugin::start-war -Dsonar.runtimeVersion=3.1 
-	then open http://localhost:9000/monitoring -->
+	<!-- Testing the plugin in Sonar: mvn install org.codehaus.sonar:sonar-dev-maven-plugin::start-war 
+		-Dsonar.runtimeVersion=3.1 then open http://localhost:9000/monitoring -->
 
 	<dependencies>
 		<dependency>
@@ -96,7 +97,7 @@
 		</dependency>
 
 		<dependency>
-			<!--<groupId>org.sonarsource.sonarqube</groupId>-->
+			<!--<groupId>org.sonarsource.sonarqube</groupId> -->
 			<groupId>org.codehaus.sonar</groupId>
 			<artifactId>sonar-testing-harness</artifactId>
 			<version>${sonar.apiVersion}</version>
