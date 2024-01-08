@@ -29,7 +29,7 @@ import org.sonar.api.web.ServletFilter;
 
 import net.bull.javamelody.PluginMonitoringFilter;
 
-// @org.sonar.api.server.ServerSide avec sonar.apiVersion >= 5.2 change quelque chose ?
+@org.sonar.api.server.ServerSide
 public class SonarMonitoringFilter extends ServletFilter {
 	private final MyPluginMonitoringFilter pluginMonitoringFilter = new MyPluginMonitoringFilter();
 

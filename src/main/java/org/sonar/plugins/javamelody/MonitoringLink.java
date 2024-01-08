@@ -17,22 +17,19 @@
  */
 package org.sonar.plugins.javamelody;
 
-import org.sonar.api.web.NavigationSection;
-import org.sonar.api.web.Page;
+import org.sonar.api.web.page.Context;
+import org.sonar.api.web.page.Page;
+import org.sonar.api.web.page.PageDefinition;
 import org.sonar.api.web.UserRole;
 
-@NavigationSection(NavigationSection.CONFIGURATION)
 @UserRole(UserRole.ADMIN)
-//@org.sonar.api.server.ServerSide avec sonar.apiVersion >= 5.2 change quelque chose ?
-public final class MonitoringLink implements Page {
+public final class MonitoringLink implements PageDefinition {
 	@Override
-	public String getId() {
-		// URL
-		return "/monitoring";
-	}
-
-	@Override
-	public String getTitle() {
-		return "Monitoring";
+	public void define(Context context) {
+		context
+			.addPage(Page.builder("/monitoring")
+			.setName("Monitoring")
+			.setAdmin(true)
+			.build());
 	}
 }
