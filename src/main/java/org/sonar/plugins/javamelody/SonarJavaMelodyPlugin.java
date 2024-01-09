@@ -38,6 +38,6 @@ public class SonarJavaMelodyPlugin implements Plugin {
 
 	@Override
 	public void define(Plugin.Context context) {
-		context.addExtensions(SonarMonitoringFilter.class);
+		context.addExtension(SonarMonitoringFilter.class);
 	}
 }
