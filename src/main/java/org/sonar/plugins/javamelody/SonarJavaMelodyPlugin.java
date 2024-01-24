@@ -17,9 +17,6 @@
  */
 package org.sonar.plugins.javamelody;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.sonar.api.Plugin;
 
 import net.bull.javamelody.Parameter;
