@@ -35,6 +35,12 @@ public class SonarJavaMelodyPlugin implements Plugin {
 
 	@Override
 	public void define(Plugin.Context context) {
-		context.addExtension(SonarMonitoringFilter.class);
+		try {
+			context.addExtension(SonarMonitoringFilter.class);
+		} catch (final Throwable t) {
+			// the plugin is installed when doing sonar analysis on a project !
+			// but fails to load the class javax.servlet.Filter,
+			// so ignoring the problem in a sonar analysis
+		}
 	}
 }
