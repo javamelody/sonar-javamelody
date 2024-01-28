@@ -40,7 +40,9 @@ public class SonarJavaMelodyPlugin implements Plugin {
 		} catch (final Throwable t) {
 			// the plugin is installed when doing sonar analysis on a project !
 			// but fails to load the class javax.servlet.Filter,
-			// so ignoring the problem in a sonar analysis
+			// so ignoring the problem in a sonar analysis.
+			// see also https://sonarsource.atlassian.net/browse/SONAR-19996
+			// and https://sonarsource.atlassian.net/browse/SONAR-21197 since sonarqube 10.4
 		}
 	}
 }
