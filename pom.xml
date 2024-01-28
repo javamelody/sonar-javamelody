@@ -52,11 +52,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<sonar.apiVersion>3.1</sonar.apiVersion>
+		<sonar.apiVersion>9.5.0.71</sonar.apiVersion>
 	</properties>
-
-	<!-- Testing the plugin in Sonar: mvn install org.codehaus.sonar:sonar-dev-maven-plugin::start-war 
-		-Dsonar.runtimeVersion=3.1 then open http://localhost:9000/monitoring -->
 
 	<dependencies>
 		<dependency>
@@ -90,17 +87,16 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
+			<groupId>org.sonarsource.api.plugin</groupId>
 			<artifactId>sonar-plugin-api</artifactId>
 			<version>${sonar.apiVersion}</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
-			<!--<groupId>org.sonarsource.sonarqube</groupId> -->
-			<groupId>org.codehaus.sonar</groupId>
+			<groupId>org.sonarsource.sonarqube</groupId>
 			<artifactId>sonar-testing-harness</artifactId>
-			<version>${sonar.apiVersion}</version>
+			<version>10.3.0.82913</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -109,16 +105,16 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.1</version>
+				<version>3.12.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>11</source>
+					<target>11</target>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
 				<artifactId>sonar-packaging-maven-plugin</artifactId>
-				<version>1.17</version>
+				<version>1.23.0.740</version>
 				<extensions>true</extensions>
 				<configuration>
 					<pluginKey>javamelody</pluginKey>

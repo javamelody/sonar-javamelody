@@ -17,11 +17,7 @@
  */
 package org.sonar.plugins.javamelody;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.sonar.api.Extension;
-import org.sonar.api.SonarPlugin;
+import org.sonar.api.Plugin;
 
 import net.bull.javamelody.Parameter;
 
@@ -31,23 +27,22 @@ import net.bull.javamelody.Parameter;
  * @author Emeric Vernat
  */
 
-public class SonarJavaMelodyPlugin extends SonarPlugin {
+public class SonarJavaMelodyPlugin implements Plugin {
 	public SonarJavaMelodyPlugin() {
 		super();
 		Parameter.NO_DATABASE.setValue("true");
 	}
 
 	@Override
-	public List<?> getExtensions() {
-		final List<Class<? extends Extension>> list = new ArrayList<Class<? extends Extension>>();
+	public void define(Plugin.Context context) {
 		try {
-			list.add(SonarMonitoringFilter.class);
-			list.add(MonitoringLink.class);
+			context.addExtension(SonarMonitoringFilter.class);
 		} catch (final Throwable t) {
 			// the plugin is installed when doing sonar analysis on a project !
 			// but fails to load the class javax.servlet.Filter,
-			// so ignoring the problem in a sonar analysis
+			// so ignoring the problem in a sonar analysis.
+			// see also https://sonarsource.atlassian.net/browse/SONAR-19996
+			// and https://sonarsource.atlassian.net/browse/SONAR-21197 since sonarqube 10.4
 		}
-		return list;
 	}
 }
