@@ -120,6 +120,10 @@
 					<pluginKey>javamelody</pluginKey>
 					<pluginName>JavaMelody</pluginName>
 					<pluginClass>org.sonar.plugins.javamelody.SonarJavaMelodyPlugin</pluginClass>
+
+					<!-- do not download javamelody plugin in sonar scans, since Sonarqube 10.4
+					https://community.sonarsource.com/t/the-sonarscanners-download-only-required-3rd-party-plugins/108156 -->
+					<requiredForLanguages>none</requiredForLanguages>
 				</configuration>
 			</plugin>
 		</plugins>
