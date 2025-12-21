@@ -3,6 +3,8 @@ sonar-javamelody
 
 Extension plugin for JavaMelody to monitor performance in Sonar 3.1 or later.
 
+**Sonarqube has migrated to jakarta servlet api which is not a problem for javamelody, but Sonarqube has also [dropped support of ServletFilter](https://github.com/SonarSource/sonarqube/commit/70f938bab6e565d8842a966d29104a046d469471) and so usage of the standard servlet api and of javamelody becomes impossible. So sonar-javamelody will not be compatible with Sonarqube v25 and later. No other release of sonar-javameloy is expected.**
+
 See https://github.com/javamelody/javamelody/wiki
 
 License ASL, http://www.apache.org/licenses/LICENSE-2.0
